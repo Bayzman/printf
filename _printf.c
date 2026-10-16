@@ -5,19 +5,16 @@
  * @format: format string
  * Return: number of characters in the string (int)
  */
-
 int _printf(const char *format, ...)
 {
 	int i, count, k;
 	va_list args;
 
 	count = 0;
-
 	if (format == NULL)
 		return (-1);
 
 	va_start(args, format);
-
 	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] != '%')
@@ -49,8 +46,6 @@ int _printf(const char *format, ...)
 			count++;
 		}
 	}
-
 	va_end(args);
-
 	return (count);
 }
