@@ -2,14 +2,50 @@
 
 /**
  * _printf - custom printf function
- * @format: char array
- * Return: int
+ * @format: format string
+ * Return: number of characters in the string (int)
  */
 
 int _printf(const char *format, ...)
 {
-  int i, count, k;
-  va_list arg;
+	int i, count, k;
+	va_list args;
 
-  return (count);
+	count = 0;
+
+	if (format == NULL)
+		return (-1);
+
+	va_start(args, format);
+
+	for (i = 0; format[i] != '\0'; i++)
+	{
+		if (format[i] != '%')
+		{
+			_putchar(format[i]);
+			count++;
+		}
+		else if (format[i] == '%' && format[i + 1] == 'c')
+		{
+			_putchar(va_arg(args, int));
+			count++;
+			i++;
+		}
+		else if (format[i] == '%' && format[i + 1] == 's')
+		{
+			k = print_string(va_arg(args, char *));
+			count = count + k;
+			i++;
+		}
+		else if (format[i] == '%' && format[i + 1] == '%')
+		{
+			_putchar('%');
+			count++;
+			i++;
+		}
+	}
+
+	va_end(args);
+
+	return (count);
 }
