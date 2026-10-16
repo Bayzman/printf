@@ -40,6 +40,11 @@ int _printf(const char *format, ...)
 			count++;
 			i++;
 		}
+		else
+		{
+			_putchar('%');
+			count++;
+		}
 	}
 	va_end(args);
 	return (count);
