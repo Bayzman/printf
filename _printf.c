@@ -22,6 +22,8 @@ int _printf(const char *format, ...)
 			_putchar(format[i]);
 			count++;
 		}
+		if (format[i] == '%')
+			;
 		else if (format[i] == '%' && format[i + 1] == 'c')
 		{
 			_putchar(va_arg(args, int));
