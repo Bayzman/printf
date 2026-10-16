@@ -14,9 +14,9 @@ int print_string(char *str)
 	if (str == NULL)
 	{
 		str = "(null)";
-		while (null[i] != '\0')
+		while (str[i] != '\0')
 		{
-			_putchar(null[i]);
+			_putchar(str[i]);
 			i++;
 		}
 		return (i);
