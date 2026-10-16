@@ -8,11 +8,18 @@
 int print_string(char *str)
 {
 	int i;
+	char *null;
 
 	i = 0;
+	null = "(null)";
 
 	if (str == NULL)
 	{
+		while (null[i] != '\0')
+		{
+			_putchar(null[i]);
+			i++;
+		}
 		return (i);
 	}
 
