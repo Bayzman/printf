@@ -22,37 +22,24 @@ int _printf(const char *format, ...)
 			_putchar(format[i]);
 			count++;
 		}
-		else if (format[i] == '%' && format[i + 1] == 'c')
-		{
-			_putchar(va_arg(args, int));
-			count++;
-			i++;
-		}
-		else if (format[i] == '%' && format[i + 1] == 's')
-		{
-			k = print_string(va_arg(args, char *));
-			count = count + k;
-			i++;
-		}
-		else if (format[i] == '%' && format[i + 1] == '%')
-		{
-			_putchar('%');
-			count++;
-			i++;
-		}
 		else
 		{
 			if (format[i + 1] == '\0')
 			{
+				va_end(args);
 				return (-1);
 			}
-			else
+
+			k = handle_specifier(format[i + 1], args);
+			if (k == -1)
 			{
-				_putchar('%');
-				count++;
+				va_end(args);
+				return (-1);
 			}
+			count += k;
+			i++;
 		}
 	}
-	va_end(args);
+
 	return (count);
 }
