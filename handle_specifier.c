@@ -27,7 +27,7 @@ int handle_specifier(char specifier, va_list args)
 		_putchar('%');
 		count++;
 	}
-	else if (specifier == 'd' || specifier == 'i')
+	else if (specifier == 'd')
 	{
 		_putchar(va_arg(args, int));
 		count ++;
